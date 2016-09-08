@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{margin:0; padding:0;}
+html,body{ overflow:hidden;}
+#form_box{ width:400px; height:300px; border:1px solid #000; border-radius:20px; background:#ebebeb; margin:100px auto; overflow:hidden; text-align:center; -webkit-transform:scale(5,5); opacity:0; display:none;}
+</style>
+<script>
+window.onload=function(){
+	var oBtn = document.getElementById('a_btn');
+	var oBox = document.getElementById('form_box');
+	var oClose = document.getElementById('close');
+	oBtn.onclick=function(){
+		oBox.style.display='block';
+		
+		oBox.style.WebkitTransition = '.3s all ease';
+		
+		setTimeout(function(){
+			oBox.style.opacity = 1;
+			oBox.style.WebkitTransform = 'scale(1,1)';
+		},0);
+	};
+	
+	oClose.onclick=function(){
+		oBox.style.WebkitTransform = 'scale(5,5)';
+		oBox.style.opacity = 0;
+		
+		function tranEnd(){
+			oBox.removeEventListener('transitionend',tranEnd,false);
+			oBox.style.display='none';
+		}
+		
+		oBox.addEventListener('transitionend',tranEnd,false);
+		
+		
+	};
+};
+</script>
+</head>
+
+<body>
+	<a href="javascript:;" id="a_btn">登录</a>
+	<div id="form_box">
+		<input type="text" /><br />
+		<input type="text" /><br />
+		<input type="text" /><br />
+		<input type="text" /><br />
+		<input type="text" /><br />
+		<a href="javascript:;" id="close">X</a>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
